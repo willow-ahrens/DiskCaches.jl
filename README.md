@@ -7,11 +7,11 @@
 [![Build Status](https://github.com/peterahrens/DiskCaches.jl/workflows/CI/badge.svg)](https://github.com/peterahrens/DiskCaches.jl/actions)
 [![Coverage](https://codecov.io/gh/peterahrens/DiskCaches.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/peterahrens/DiskCaches.jl)
 
-Basic Julia implementation of a cache mapped to the filesystem, for persistence across multiple julia sessions. This implementation is intended to be thread and process safe, and files are formatted with `Serialization`.
+Basic Julia implementation of a cache mapped to the filesystem, for persistence across multiple Julia sessions. This implementation is intended to be thread and process safe, and files are formatted with `Serialization`.
 
 A `DiskCache` can associate keys with values, but cannot modify existing associations. Reading entries already on chip is fast, but writing values to disk is quite slow. The cache follows the `AbstractDict` interface, but methods which modify existing associations in the dictionary will error.
 
-This package was desined with memoization in mind via [MemoizedMethods.jl](https://github.com/peterahrens/MemoizedMethods.jl).
+This package was designed with memoization in mind via [MemoizedMethods.jl](https://github.com/peterahrens/MemoizedMethods.jl).
 
 ## Usage
 
