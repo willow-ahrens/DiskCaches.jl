@@ -86,7 +86,7 @@ DiskCache{Int64,Int64,IdDict{Int64,Int64}}()
 
 If you want to delete a `DiskCache` and are sure that no other caches with the same path will be used in the future, `rm` the file and make a new `DiskCache` with the same filename. This is a relatively unsafe operation.
 
-```
+```julia
 julia> c = DiskCache("path_to_cache.jls")
 DiskCache{Any,Any,Dict{Any,Any}} with 3 entries:
   2 => 3
