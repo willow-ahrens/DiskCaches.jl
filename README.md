@@ -46,7 +46,7 @@ julia> get!(c, 3) do 4 end
 
 Multiple caches pointed at the same file will shadow each other.
 
-```
+```julia
 julia> c_shadow = DiskCache("path_to_cache.jls")
 DiskCache{Any,Any,Dict{Any,Any}} with 3 entries:
   2 => 3
