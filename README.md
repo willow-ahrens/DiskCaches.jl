@@ -7,15 +7,15 @@
 [![Build Status](https://github.com/peterahrens/DiskCaches.jl/workflows/CI/badge.svg)](https://github.com/peterahrens/DiskCaches.jl/actions)
 [![Coverage](https://codecov.io/gh/peterahrens/DiskCaches.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/peterahrens/DiskCaches.jl)
 
-Basic Julia implementation of a cache mapped to the filesystem, for persistence across multiple julia sessions. This implementation is intended to be thread and process safe, and files are formatted with `Base.Serialization`.
+Basic Julia implementation of a cache mapped to the filesystem, for persistence across multiple julia sessions. This implementation is intended to be thread and process safe, and files are formatted with `Serialization`.
 
-A `DiskCache` can associate keys with values, but cannot modify existing associations. Reading entries already on chip is fast, but writing values to disk is quite slow. The cache follows the `Base.AbstractDict` interface, but methods which modify existing associations in the dictionary will error.
+A `DiskCache` can associate keys with values, but cannot modify existing associations. Reading entries already on chip is fast, but writing values to disk is quite slow. The cache follows the `AbstractDict` interface, but methods which modify existing associations in the dictionary will error.
 
 This package was desined with memoization in mind via [MemoizedMethods.jl](https://github.com/peterahrens/MemoizedMethods.jl).
 
 ## Usage
 
-```julia-repl
+```julia
 julia> using DiskCaches
 
 julia> c = DiskCache("path_to_cache.jls")
@@ -36,7 +36,7 @@ ERROR: To ensure the validity of the on-chip cache, DiskCaches do not support va
 
 Again, these caches don't support modifications to existing key-value pairs. It's easiest to atomically "add a value if the key doesn't exist yet" with the `get!` functions.
 
-```julia-repl
+```julia
 julia> get!(c, 1, 42)
 2
 
@@ -66,7 +66,7 @@ DiskCache{Any,Any,Dict{Any,Any}} with 3 entries:
 
 ... in a separate Julia session ...
 
-```julia-repl
+```julia
 julia> using DiskCaches
 
 julia> c = DiskCache("path_to_cache.jls")
@@ -79,7 +79,7 @@ DiskCache{Any,Any,Dict{Any,Any}} with 3 entries:
 
 DiskCaches use an on-chip cache which also defines the behavior (e.g. `==` vs. `===`) of the associative collection. By default, DiskCaches use `Dict` (not `IdDict`) as the on-chip cache. You may provide a specialized AbstractDict type to be used by DiskCaches, as long as it may be serialized, does not delete its values, and supports a no-argument constructor. Nesting DiskCaches with the same file will result in deadlock.
 
-```julia-repl
+```julia
 julia> c = DiskCache{Int,Int,IdDict{Int,Int}}("path_to_special_cache.jls")
 DiskCache{Int64,Int64,IdDict{Int64,Int64}}()
 ```
