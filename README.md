@@ -99,3 +99,4 @@ julia> rm("path_to_cache.jls")
 julia> c = DiskCache("path_to_cache.jls")
 DiskCache{Any,Any,Dict{Any,Any}}()
 ```
+
