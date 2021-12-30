@@ -8,6 +8,7 @@ deps = ["Printf"]
 uuid = "ade2ca70-3891-5945-98fb-dc099432e06a"
 
 [[DiskCaches]]
+deps = ["Pidfile", "Serialization"]
 path = ".."
 uuid = "83811839-e1fd-4dfd-90d4-61934971aaca"
 version = "0.1.0"
@@ -27,6 +28,9 @@ deps = ["Base64", "Dates", "DocStringExtensions", "IOCapture", "InteractiveUtils
 git-tree-sha1 = "b7715ae18be02110a8cf9cc8ed2ccdb1e3e3aba2"
 uuid = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 version = "0.26.1"
+
+[[FileWatching]]
+uuid = "7b1f6079-737a-58dc-b8bc-7a2ca5c1b5ee"
 
 [[IOCapture]]
 deps = ["Logging"]
@@ -66,6 +70,12 @@ deps = ["Dates"]
 git-tree-sha1 = "50c9a9ed8c714945e01cd53a21007ed3865ed714"
 uuid = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
 version = "1.0.15"
+
+[[Pidfile]]
+deps = ["FileWatching", "Test"]
+git-tree-sha1 = "1be8660b2064893cd2dae4bd004b589278e4440d"
+uuid = "fa939f87-e72e-5be4-a000-7fc836dbe307"
+version = "1.2.0"
 
 [[Pkg]]
 deps = ["Dates", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "UUIDs"]
